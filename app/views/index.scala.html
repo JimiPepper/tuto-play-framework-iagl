@@ -1,0 +1,26 @@
+@***
+@(images : List[Image])
+***@
+
+@main(Html("Page d'accueil"), nav="index") {
+<div class="container">
+	<div class= "row center">
+		<h1>Welcome</h1>
+		
+		
+		<p>Veuillez réaliser l'exercice</p>
+		
+		@***
+		<div id="listImage">
+			@images.grouped(3).toList.map { list => 
+				<div class="row">
+					@for(img <- list) {
+							<a href="/preview/@img.getId"><img src="@routes.Assets.at(img.getPath)" alt="preview image" class="img-rounded" /></a>
+					}
+				</div>
+			}
+		</div>
+		***@
+	</div>
+</div><!-- /.container -->
+}

@@ -1,0 +1,24 @@
+@***
+@(image : Image, form_addComment : Form[Comment])
+***@
+
+@import helper._
+@main(Html("Preview de l'image"), nav = "previewImage") {
+<div class="container">
+	<div class="center">
+	
+	@***
+	<div class="page-header">
+		<h1>Preview de l'image numéro @image.getId</h1>
+		<a href="@routes.PreviewImage.formAddComment(image.getId)">Ajouter un commentaire</a></li>
+	</div>
+	
+	<p><img src="@routes.Assets.at(image.getPath)" alt="une_image" width="500px" /></p>
+	<ul class="commentList list-group">	
+		@image.getListComment.map { comment => <li class="list-group-item col-md-6 col-md-offset-3"><span class="bold">Commentaire écrit le @{comment.getDate()} à  @{comment.getHours()} :</span> @{comment.getText()}</li> }
+	</ul>
+	***@
+	
+</div>
+</div><!-- /.container -->
+} 

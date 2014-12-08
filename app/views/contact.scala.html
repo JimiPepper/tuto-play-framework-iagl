@@ -1,0 +1,22 @@
+@(form_contact : Form[forms.ContactMail])
+@import helper._
+
+@main(Html("Comment me contacter ?"), nav = "contact") {
+	<div class="container">
+		<div class="starter-template">
+			<h1>Contact</h1>
+			<p class="lead">Pour m'envoyer un mail, merci de remplir le formulaire juste en dessous</p>
+		</div>
+
+		@helper.form(action = routes.Contact.sendMail()) {
+			@inputText(field = form_contact("emailSender"), '_label -> "E-mail", '_showConstraints -> false)
+		
+			@textarea(field = form_contact("message"), '_label -> "Message", '_showConstraints -> false, 'rows -> 3, 'cols -> 50)
+
+			<div class="actions">
+				<input type="submit" class="btn primary" value="Ajouter commentaire">
+			</div>
+		}
+    </div>
+    <!-- /.container -->
+}

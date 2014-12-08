@@ -1,0 +1,28 @@
+body {
+padding-top: 50px;
+}
+
+div#listImage  img{
+	width : 20%;
+}
+
+.center {
+padding: 40px 15px;
+text-align: center;
+}
+div .img-rounded {
+margin : 15px;
+}
+
+.commentList {
+text-align: left;
+} 
+
+.commentItem {
+width : 200px;
+display : inline-block;
+}
+
+.bold {
+ font-weight : bold;
+}

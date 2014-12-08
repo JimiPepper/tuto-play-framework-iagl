@@ -1,0 +1,49 @@
+@***
+@(images : List[Image])
+***@
+@import helper._
+
+@main(Html("Espace administration"), nav = "listImageAdmin") {
+
+<div class="container">
+	<div class= "row center">
+		<h1>Administration du PortFolio</h1>		
+		
+		@if(flash.contains("error")) {			
+			<h5>@flash.get("error")</h5>
+		}
+		
+		@if(flash.contains("success")) {		
+			<h5>@flash.get("success")</h5>
+		}
+
+		@helper.form(action = routes.ImageAdmin.addImage(), 'enctype -> "multipart/form-data") {
+			<input type="file" name="picture" /> <input type="submit" value="Upload" />
+		}			
+		
+		<p>Réaliser l'exercice 3</p>
+		
+		@*						
+		@helper.form(routes.ImageAdmin.removeImage()) {
+			<div id="listImage">
+				@images.grouped(3).toList.map { list => 
+					@for(img <- list) {
+					<div class="row">
+							<input type="checkbox" name="image" value="@img.getId">
+						
+							<a href ="/preview/@img.getId"><img src="@routes.Assets.at(img.getPath)" alt="imgage" class="img-rounded" width="20%" /></a>
+							<div class="dropdown commentItem">
+								<button class="btn btn-default dropdown-toggle" type="button" id="dropdownComment" data-toggle="dropdown" aria-expanded="false">Commentaires</button>
+								<ul class="dropdown-menu" role="menu" aria-lebelledby="dropdownComment">
+							
+								</ul>
+							</div>
+					</div>	
+					}
+				}	
+					<input type="submit" value="Supprimer les images sélectionnées" />
+		}
+		*@
+	</div> <!-- end row center -->
+</div> <!-- /.container -->
+}
