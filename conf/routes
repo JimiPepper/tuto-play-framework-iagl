@@ -1,0 +1,42 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+GET     /								controllers.Portfolio.index()
+
+# Admin - Log in & out
+#~~~~~~~~~~
+GET 	/admin/login					controllers.Login.index()
+
+POST	/admin/connect					controllers.Login.connect()
+
+GET		/admin/logout					controllers.Login.logout()
+
+# Admin space - Actions
+#~~~~~~~~~~
+GET		/admin/image/list				controllers.ImageAdmin.listImages()
+
+POST	/preview/remove					controllers.ImageAdmin.removeImage()
+
+POST	/admin/image/upload				controllers.ImageAdmin.addImage()
+
+GET 	/admin/comment/delete/:id		controllers.CommentAdmin.delete(id : Long)
+
+
+# Site - front office
+#~~~~~~~~~~
+GET     /about              			controllers.Portfolio.about()
+
+GET     /contact            			controllers.Contact.contact()
+
+POST	/contact/send-mail				controllers.Contact.sendMail()
+
+GET     /preview/:id					controllers.PreviewImage.getImageById(id : Long)
+
+GET   	/preview/:id/add-comment		controllers.PreviewImage.formAddComment(id : Long)
+
+POST    /preview/:id/addComment			controllers.PreviewImage.addComment(id : Long)
+
+# Map static resources from the /public folder to the /assets URL path
+#~~~~~~~~~~
+GET     /assets/*file              	 controllers.Assets.at(path="/public", file)

@@ -1,0 +1,30 @@
+@(form_login : Form[Admin])
+@import helper._
+
+@main(Html("Connexion de l'administrateur"), nav = "loginAdmin") {
+
+
+<! DOCTYPE html>
+<html>
+<head>
+	<title>Connexion - Administration</title>
+</head>
+<body>
+	<div class="container">
+	<h1>Se connecter à l'espace d'administration</h1>
+	
+	@if(form_login.hasGlobalErrors) {
+	    <p class="error">
+	        @form_login.globalError.message
+	    </p>
+	}
+	
+	@helper.form(action = routes.Login.connect()) {
+		@helper.inputText(form_login("pseudo"), '_showConstraints -> false)
+    	@helper.inputPassword(form_login("password"), '_showConstraints -> false)
+    	<input type="submit" value="Se connecter !" />
+	}
+</div>
+</body>
+</html>
+}

@@ -1,0 +1,18 @@
+@(form_addComment : Form[Comment], id: Long)
+@import helper._
+
+@main(Html("Ajout d'un commentaire"), nav = "addComment") {
+<div class="container">
+	@form(action = routes.PreviewImage.addComment(id)) {
+		@textarea(
+			form_addComment("text"), 
+		        '_label -> "Texte", 'cols -> 50,
+		        '_showConstraints -> false
+		)
+
+		<div class="actions">
+			<input type="submit" class="btn primary" value="Ajouter commentaire" />
+		</div>
+		}
+</div>
+}
